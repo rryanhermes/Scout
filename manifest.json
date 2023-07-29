@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Scout",
+  "version": "1.0",
+  "description": "Get the outline of any online webpage or article",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["tabs", "scripting", "nativeMessaging", "activeTab"],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
