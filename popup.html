@@ -4,7 +4,7 @@
   <title>Scout</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Droid Sans", Arial, sans-serif;
     }
     h1 {
       text-align: center;
@@ -14,22 +14,45 @@
       padding: 0;
     }
     #tagsList ul {
-      padding: 0;
-      margin: 0;
+      padding-left: 20px;
+      padding-bottom: 7px;
     }
     #tagsList li {
-      color: blue;
-      font-family: "Poppins", monospace;
+      color: #000000;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: medium;
     }
     body {
       width: 300px;
-      height: 250px;
+      /* Remove the fixed height */
+      /* height: 250px; */
+      /* Add a maximum height to limit it to 600px */
+      max-height: 600px;
     }
   </style>
   <script src="popup.js"></script>
+  <script>
+    // Dynamically adjust the popup window height based on the size of the list of headers
+    function adjustPopupHeight() {
+      const tagsList = document.getElementById("tagsList");
+      const listHeight = tagsList.clientHeight;
+      // Set a minimum height of 250px to avoid shrinking too much
+      const minHeight = 250;
+      // Set the maximum height to 600px
+      const maxHeight = 600;
+      const newHeight = Math.min(maxHeight, Math.max(minHeight, listHeight));
+      window.resizeTo(300, newHeight);
+    }
+
+    // Call the function once the content is loaded
+    window.addEventListener("load", adjustPopupHeight);
+
+    // Call the function whenever the window is resized
+    window.addEventListener("resize", adjustPopupHeight);
+  </script>
 </head>
 <body>
-  <h1>Website H2 Tags</h1>
+  <h1>Article Outline</h1>
   <div id="tagsList"></div>
 </body>
 </html>
