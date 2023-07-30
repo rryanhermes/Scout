@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const errorLi = document.createElement('li');
         errorLi.textContent = 'Error';
         errorLi.style.color = 'red';
-        errorLi.style.fontWeight = 'bold';
         tagsListDiv.appendChild(errorLi);
       }
     });
