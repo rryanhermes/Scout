@@ -15,7 +15,6 @@
     }
     #tagsList ul {
       padding-left: 20px;
-      padding-bottom: 7px;
     }
     #tagsList li {
       color: #000000;
@@ -24,30 +23,21 @@
     }
     body {
       width: 300px;
-      /* Remove the fixed height */
-      /* height: 250px; */
-      /* Add a maximum height to limit it to 600px */
       max-height: 600px;
     }
   </style>
   <script src="popup.js"></script>
   <script>
-    // Dynamically adjust the popup window height based on the size of the list of headers
     function adjustPopupHeight() {
       const tagsList = document.getElementById("tagsList");
       const listHeight = tagsList.clientHeight;
-      // Set a minimum height of 250px to avoid shrinking too much
-      const minHeight = 250;
-      // Set the maximum height to 600px
       const maxHeight = 600;
       const newHeight = Math.min(maxHeight, Math.max(minHeight, listHeight));
       window.resizeTo(300, newHeight);
     }
 
-    // Call the function once the content is loaded
     window.addEventListener("load", adjustPopupHeight);
 
-    // Call the function whenever the window is resized
     window.addEventListener("resize", adjustPopupHeight);
   </script>
 </head>
