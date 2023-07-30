@@ -4,10 +4,10 @@
   <title>Scout</title>
   <style>
     body {
-      width: 300px;
+      width: 350px;
       max-height: 600px;
-      background-color: black; /* Set background color to black */
-      color: white; /* Set text color to white */
+      background-color: rgb(17, 17, 17);
+      color: white;
       font-family: system-ui, -apple-system, Segoe UI;
     }
     
@@ -16,10 +16,16 @@
       font-size: 24px;
       margin-bottom: 9px;
       margin-top: 0px;
-      color: rgb(228, 228, 228);
+      color: rgb(209, 209, 209);
       padding: 10px;
       border-radius: 5px;
-      border: 2px solid rgb(60, 60, 60);
+      border: 1px solid rgb(60, 60, 60);
+      display: flex;
+      align-items: center;
+    }
+
+    .header-icon {
+      margin-right: 7px;
     }
     
     #tagsList {
@@ -37,16 +43,32 @@
     }
     
     #tagsList li {
-      color: #7dc4e5;
+      color: rgb(209, 209, 209);
       font-size: medium;
       margin-bottom: 5px;
-      border: 1px solid rgb(21, 21, 21);
+      padding: 3px;
+      border: 1px #26242c;
+      font-family: system-ui, -apple-system, Segoe UI;
+    }
+
+    #bug-button {
+      color: rgb(221, 125, 125);
+      padding: 10px 5px 10px 5px;
+      font-family: system-ui, -apple-system, Segoe UI;
+      float: right;
+      font-weight: bold;
+      background-color: transparent;
+      border-color: transparent;
     }
   </style>
   <script src="popup.js"></script>
 </head>
 <body>
-  <h1>Article Outline</h1>
+  <h1>
+    <img class="header-icon" src="images/icon128.png" width="35" height="35">
+    Article Outline
+  </h1>
   <div id="tagsList"></div>
+  <button id="bug-button">Report a Bug</button>
 </body>
 </html>
