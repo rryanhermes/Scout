@@ -4,42 +4,46 @@
   <title>Scout</title>
   <style>
     body {
-      font-family: "Droid Sans", Arial, sans-serif;
-    }
-    h1 {
-      text-align: center;
-    }
-    #tagsList {
-      list-style-type: none;
-      padding: 0;
-    }
-    #tagsList ul {
-      padding-left: 20px;
-    }
-    #tagsList li {
-      color: #000000;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-size: medium;
-    }
-    body {
       width: 300px;
       max-height: 600px;
+      background-color: black; /* Set background color to black */
+      color: white; /* Set text color to white */
+      font-family: system-ui, -apple-system, Segoe UI;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 9px;
+      margin-top: 0px;
+      color: rgb(228, 228, 228);
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid rgb(60, 60, 60);
+    }
+    
+    #tagsList {
+      padding: 0;
+    }
+    
+    #tagsList ul {
+      padding-left: 20px;
+      margin: 0;
+      padding-bottom: 10px;
+      background-color: #26242c;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid rgb(60, 60, 60);
+    }
+    
+    #tagsList li {
+      color: #7dc4e5;
+      font-size: medium;
+      margin-bottom: 5px;
+      border: 1px solid rgb(21, 21, 21);
     }
   </style>
   <script src="popup.js"></script>
-  <script>
-    function adjustPopupHeight() {
-      const tagsList = document.getElementById("tagsList");
-      const listHeight = tagsList.clientHeight;
-      const maxHeight = 600;
-      const newHeight = Math.min(maxHeight, Math.max(minHeight, listHeight));
-      window.resizeTo(300, newHeight);
-    }
-
-    window.addEventListener("load", adjustPopupHeight);
-
-    window.addEventListener("resize", adjustPopupHeight);
-  </script>
 </head>
 <body>
   <h1>Article Outline</h1>
