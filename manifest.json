@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Scout",
+  "name": "Scout - Article Outline Viewer",
   "version": "1.0",
-  "description": "Get the outline article",
+  "description": "Enhance your web browsing experience by navigating through any article's outline with the click of a button",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
@@ -11,7 +11,7 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["tabs", "scripting", "nativeMessaging", "activeTab"],
+  "permissions": ["activeTab"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

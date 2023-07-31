@@ -7,14 +7,22 @@ document.addEventListener('DOMContentLoaded', function () {
       const tagsListDiv = document.getElementById('tagsList');
       tagsListDiv.innerHTML = '';
 
-      if (response && response.h2Tags && response.h2Tags.length > 0) {
+      if (response && response.h1Tag && response.h2Tags && response.h2Tags.length > 0) {
+        // Create and append the H1 tag to the top
+        const h1Header = document.createElement('h1');
+        h1Header.textContent = toTitleCase(response.h1Tag);
+
+        // Convert H1 text to title case
+        h1Header.textContent = toTitleCase(response.h1Tag);
+
+        tagsListDiv.appendChild(h1Header);
+
         // Create and append a list of H2 tags to the popup
         const h2Ul = document.createElement('ul');
+        h2Ul.id = 'h2List';
+        h2Ul.style.listStyle = 'none';
         response.h2Tags.forEach((tagText, index) => {
           const li = document.createElement('li');
-          li.textContent = tagText;
-
-          // Convert tagText to title case
           li.textContent = toTitleCase(tagText);
 
           // Add an event listener to scroll to the selected header on click
@@ -40,7 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // If no headers are present, display an 'Error' element
         const errorLi = document.createElement('li');
         errorLi.textContent = 'Error';
+        errorLi.style.listStyle = 'none';
         errorLi.style.color = 'red';
+        errorLi.style.fontWeight = 'bold';
         tagsListDiv.appendChild(errorLi);
       }
     });
