@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         // If no headers are present, display an 'Error' element
         const errorLi = document.createElement('li');
-        errorLi.textContent = 'Error';
+        errorLi.textContent = 'No headers found';
         errorLi.style.listStyle = 'none';
         errorLi.style.color = 'red';
         errorLi.style.fontWeight = 'bold';
