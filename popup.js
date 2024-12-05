@@ -59,9 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to scroll the webpage to the selected header
 function scrollToHeader(index, tagName) {
-  // Send a message to the content script to instruct scrolling to the selected header
+  const offset = 100; // Number of pixels to stay above the header
+  
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { action: 'scrollToHeader', index: index, tagName: tagName });
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'scrollToHeader', index: index, tagName: tagName, offset: offset });
   });
 }
 
