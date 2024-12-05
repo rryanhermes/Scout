@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         // If no headers are present, display an 'Error' element
         const errorLi = document.createElement('li');
-        errorLi.textContent = 'No headers found';
+        errorLi.textContent = "Scout doesn't support this page";
         errorLi.style.listStyle = 'none';
-        errorLi.style.color = 'red';
-        errorLi.style.fontWeight = 'bold';
+        errorLi.style.color = 'lightgray';
+        errorLi.style.fontWeight = 'normal';
+        errorLi.style.fontStyle = "italic"; 
         tagsListDiv.appendChild(errorLi);
       }
     });

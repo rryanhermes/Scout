@@ -2,6 +2,3 @@ use a LLM AI to 'ignore' the unimportant/duplicate/unrelevant tags and spellchec
 make the <hr> solid and dim
 add a leave a review button linked to review page in bottom left
 request a 'featured' tag from chrome
-change 'error' message to 'no headers found, try this tool on an article'
-Redo the description shown on the web store
-add a space & capitalize my name between ryan and hermes in the 'offered by' field
