@@ -1,21 +1,29 @@
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.action === 'getHeaderTags') {
-    // Gather the H1 and H2 tags from the current webpage
-    const h1Tag = document.querySelector('h1').textContent.trim();
-    const h2Tags = Array.from(document.querySelectorAll('h2')).map((h2) => h2.textContent.trim());
-
-    // Send the H1 and H2 tags back to the popup
-    sendResponse({ h1Tag: h1Tag, h2Tags: h2Tags });
+    // Gather all heading tags from the current webpage
+    let headingIndex = 0;
+    const headings = [];
+    ['h1', 'h2', 'h3'].forEach(tag => {
+      document.querySelectorAll(tag).forEach(h => {
+        // Assign a unique data attribute for reliable scrolling
+        const uniqueId = `scout-heading-${headingIndex++}`;
+        h.setAttribute('data-scout-id', uniqueId);
+        headings.push({
+          text: h.textContent.trim(),
+          level: parseInt(tag[1]),
+          selector: `[data-scout-id='${uniqueId}']`
+        });
+      });
+    });
+    // Send the headings back to the popup
+    sendResponse({ headings });
   } else if (message.action === 'scrollToHeader') {
-    // Scroll to the selected header
-    const tagName = message.tagName; // Get the tag name from the message
-    const headers = document.querySelectorAll(tagName);
-
-    const index = message.index;
-
-    if (index >= 0 && index < headers.length) {
-      headers[index].scrollIntoView({ behavior: 'smooth' });
+    // Scroll to the selected header using the unique selector
+    const selector = message.selector;
+    const el = document.querySelector(selector);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 });

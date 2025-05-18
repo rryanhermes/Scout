@@ -3,24 +3,51 @@
 <head>
   <title>Scout</title>
   <style>
+    :root {
+      --bg-color: rgb(17, 17, 17);
+      --text-color: white;
+      --secondary-bg: #26242c;
+      --border-color: rgb(60, 60, 60);
+      --heading-color: rgb(209, 209, 209);
+      --hover-color: skyblue;
+      --error-color: lightgray;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #fff;
+      --text-color: #222;
+      --secondary-bg: #f7f7f7;
+      --border-color: #e0e0e0;
+      --heading-color: #222;
+      --hover-color: #0066cc;
+      --error-color: #888;
+    }
+
     body {
       width: 350px;
       max-height: 600px;
-      background-color: rgb(17, 17, 17);
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: system-ui, -apple-system, Segoe UI;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-content {
+      padding: 10px 10px 0 10px;
     }
     
     h1 {
-      text-align: left; /* Align the h1 tag to the left */
-      font-size: 18px; /* Reduce the font size of the h1 tag */
+      text-align: left;
+      font-size: 18px;
       margin-bottom: 9px;
       margin-top: 0px;
-      color: rgb(209, 209, 209);
-      padding: 10px;
+      color: var(--heading-color);
+      padding: 10px 0 10px 0;
       border-radius: 5px;
       display: flex;
       align-items: center;
+      margin-left: 4px;
     }
 
     .header-icon {
@@ -31,23 +58,24 @@
       padding: 0;
     }
     
-    #h2List {
-      padding-left: 20px;
+    #headingsList {
+      padding-left: 0;
       margin: 0;
-      padding-bottom: 10px;
-      background-color: #26242c;
-      padding: 10px;
-      border-radius: 5px;
-      border: 2px solid rgb(60, 60, 60);
+      padding-bottom: 8px;
+      background-color: var(--secondary-bg);
+      padding: 7px 7px 7px 7px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-color);
     }
     
     #tagsList li {
-      color: rgb(209, 209, 209);
+      color: var(--heading-color);
       font-size: medium;
       margin-bottom: 5px;
-      padding: 3px;
-      border: 1px #26242c;
+      padding: 3px 7px 3px 7px;
+      border: 1px var(--secondary-bg);
       font-family: system-ui, -apple-system, Segoe UI;
+      box-sizing: border-box;
     }
 
     #bug-button {
@@ -70,23 +98,117 @@
       border-color: transparent;
     }
 
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px 8px 8px;
+      margin-top: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 4px;
+    }
+
     hr {
       border: 0;
       margin-top: 0px;
       height: 1px;
       background-image: linear-gradient(to right, rgba(150, 150, 150, 0), rgba(150, 150, 150, 0), rgba(150, 150, 150, 0));
     }
+
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin: 0 4px;
+    }
+
+    .theme-switch {
+      display: inline-block;
+      height: 18px;
+      position: relative;
+      width: 36px;
+    }
+
+    .theme-switch input {
+      display: none;
+    }
+
+    .slider {
+      background-color: #bbb;
+      bottom: 0;
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .4s;
+      border-radius: 18px;
+    }
+
+    .slider:before {
+      background-color: #fff;
+      bottom: 3px;
+      content: "";
+      height: 12px;
+      left: 3px;
+      position: absolute;
+      transition: .4s;
+      width: 12px;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #bbb;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+
+    .theme-label {
+      margin: 0 4px;
+      color: var(--text-color);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .theme-icon {
+      width: 13px;
+      height: 13px;
+      display: inline-block;
+      vertical-align: middle;
+    }
   </style>
   <script src="popup.js"></script>
 </head>
 <body>
-  <h1>
-    <img class="header-icon" src="images/icon1282.png" width="35" height="35">
-    Article Outline
-  </h1>
-  <hr>
-  <div id="tagsList"></div>
-  <a id="bug-button" href="mailto:rryanhermes@gmail.com?subject=Bug%20Report" style="text-decoration: none;" target="_blank">Report a Bug</a>
-  <a id="leave-review" href="https://chromewebstore.google.com/detail/scout-ai/dbejpjnffdchjpcekapojgahfbdamjki" style="text-decoration: none;" target="_blank">Leave a Review</a>
+  <div class="main-content">
+    <h1>
+      <img class="header-icon" src="images/icon1282.png" width="35" height="35">
+      Article Outline
+    </h1>
+    <hr>
+    <div id="tagsList"></div>
+  </div>
+  <div class="bottom-bar">
+    <a id="leave-review" href="https://chromewebstore.google.com/detail/scout-ai/dbejpjnffdchjpcekapojgahfbdamjki" style="text-decoration: none;" target="_blank">Leave a Review</a>
+    <div class="theme-switch-wrapper">
+      <span class="theme-label" title="Night mode">
+        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>
+      </span>
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+      </label>
+      <span class="theme-label" title="Day mode">
+        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </span>
+    </div>
+    <a id="bug-button" href="mailto:rryanhermes@gmail.com?subject=Bug%20Report" style="text-decoration: none;" target="_blank">Report a Bug</a>
+  </div>
 </body>
 </html>
